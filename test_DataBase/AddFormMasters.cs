@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace test_DataBase
 {
-    public partial class AddFormDormitories : Form
+    public partial class AddFormMasters : Form
     {
         private readonly DataBase dataBase = new DataBase();
 
-        public AddFormDormitories()
+        public AddFormMasters()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -24,8 +24,13 @@ namespace test_DataBase
             try
             {
                 dataBase.OpenConnection();
-                var dormitoryName = textBoxDormitoryName.Text;
-                var addQuery = $"insert into Dormitories (DormitoryName) values ('{dormitoryName}')";
+                var fullName = textBoxFullName.Text;
+                var adress = textBoxAddress.Text;
+                var phone = textBoxPhone.Text;
+                var dateOfBirth = textBoxDateOfBirth.Text;
+                var insuranceNumber = textBoxInsuranceNumber.Text;
+                var iNN = textBoxINN.Text;
+                var addQuery = $"INSERT INTO Masters (FullName, Address, Phone, DateOfBirth, InsuranceNumber, INN) VALUES ('{fullName}', '{adress}', '{phone}', '{dateOfBirth}', '{insuranceNumber}', '{iNN}')";
                 var sqlCommand = new SqlCommand(addQuery, dataBase.GetConnection());
                 sqlCommand.ExecuteNonQuery();
                 MessageBox.Show("Запись успешно создана!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace test_DataBase
 {
-    public partial class AddFormGroups : Form
+    public partial class AddFormMaterials : Form
     {
         private readonly DataBase dataBase = new DataBase();
 
-        public AddFormGroups()
+        public AddFormMaterials()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -24,8 +24,8 @@ namespace test_DataBase
             try
             {
                 dataBase.OpenConnection();
-                var groupName = textBoxGroupName.Text;
-                var addQuery = $"insert into Groups (GroupName) values ('{groupName}')";
+                var materialName = textBoxMaterialName.Text;
+                var addQuery = $"insert into Materials (MaterialName) values ('{materialName}')";
                 var sqlCommand = new SqlCommand(addQuery, dataBase.GetConnection());
                 sqlCommand.ExecuteNonQuery();
                 MessageBox.Show("Запись успешно создана!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
